@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <title>What the forward?!</title>
+        <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Fira Code'>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div class="content">
+            
+            <div id="scenario-buttons">
+                <a href="scenario1.html">
+                    <button class="scenario scenario-current">1</button>
+                </a>
+                <a href="scenario2.html">
+                    <button class="scenario">2</button>
+                </a>
+                <a href="scenario3.html">
+                    <button class="scenario">3</button>
+                </a>
+                <a href="scenario4.html">
+                    <button class="scenario">4</button>
+                </a>
+            </div>
+
+            <p>
+                I would like to have a port on my computer,
+                that forwards to a port on another computer.
+            </p>
+
+            <pre>
+   my computer                         another computer
+@@@@@@@@@@@@@@@@@@                    @@@@@@@@@@@@@@@@@@
+@                @                    @       <span class="c">(C)</span>      @
+@                @         ssh        @                @
+@ my app -----> 1234 <============> 8080 ---> database @
+@                @ <span class="a">(A)</span>  username  <span class="b">(B)</span> @                @
+@   ssh client   @         <span class="d">(D)</span>        @   ssh server   @
+@@@@@@@@@@@@@@@@@@                    @@@@@@@@@@@@@@@@@@
+            </pre>
+
+            <p>
+                Example
+            </p>
+
+            <p>
+                My application on my computer is configured to connect 
+                to a database on localhost:1234. <br>
+                This should connect it to the database on another-computer:8080.
+            </p>
+
+            <div class="questions">
+                <div>
+                    <label class="a">My computer's port (A):</label>
+                    <input type="text" id="myport" />
+                </div>
+                <div>
+                    <label class="b">Other computer's port (B):</label>
+                    <input type="text" id="otherport" />
+                </div>
+                <div>
+                    <label class="c">Other computer's address (C):</label>
+                    <input type="text" id="otheraddr" />
+                </div>
+                <div>
+                    <label class="d">SSH username (D):</label>
+                    <input type="text" id="username" />
+                </div>
+            </div>
+
+            <div>
+                <label id="result"></label>
+            </div>
+
+            <div>
+                <div>
+                    <button id="copy-button">copy to clipboard</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var myport = document.getElementById('myport');
+            var otherport = document.getElementById('otherport');
+            var otheraddr = document.getElementById('otheraddr');
+            var username = document.getElementById('username');
+
+            var result = document.getElementById('result');
+            result.innerText = "ssh -L ..."
+
+            const inputHandler = function() {
+                result.innerText = `ssh -L ${myport.value}:localhost:${otherport.value} ${username.value}@${otheraddr.value}`;
+            }
+
+            myport.addEventListener('input', inputHandler);
+            otherport.addEventListener('input', inputHandler);
+            otheraddr.addEventListener('input', inputHandler);
+            username.addEventListener('input', inputHandler);
+
+            function copyResultToClipboard() {
+                navigator.clipboard.writeText(result.innerText);
+            }
+
+            var copyButton = document.getElementById("copy-button");
+            copyButton.addEventListener("click", copyResultToClipboard);
+         </script>
+    </body>
+</html>

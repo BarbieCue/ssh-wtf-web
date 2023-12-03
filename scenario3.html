@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <title>What the forward?!</title>
+        <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Fira Code'>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="content">
+
+            <div id="scenario-buttons">
+                <a href="scenario1.html">
+                    <button class="scenario">1</button>
+                </a>
+                <a href="scenario2.html">
+                    <button class="scenario">2</button>
+                </a>
+                <a href="scenario3.html">
+                    <button class="scenario scenario-current">3</button>
+                </a>
+                <a href="scenario4.html">
+                    <button class="scenario">4</button>
+                </a>
+            </div>
+
+            <p>
+                I want to open one of my computer's ports to the 
+                outside world so that others can access it.
+            </p>
+
+            <pre>
+   my computer                             gateway
+@@@@@@@@@@@@@@@@@@                    @@@@@@@@@@@@@@@@@@
+@                @                    @       <span class="c">(C)</span>      @
+@                @          ssh       @                @
+@ my app <----- 1234 <==============> @ <------------ 8080 <--- curl gateway:8080
+@                @ <span class="a">(A)</span>    username    @                @ <span class="b">(B)</span>
+@   ssh client   @          <span class="d">(D)</span>       @   ssh server   @
+@@@@@@@@@@@@@@@@@@                    @@@@@@@@@@@@@@@@@@
+            </pre>
+            
+            <p>
+                Example
+            </p>
+
+            <p>
+                My application runs on my computer and i want people 
+                from outside of my network to access it.
+            </p>
+
+            <p>
+                Important
+            </p>
+            <p>
+                I'm sure that 'GatewayPorts' is set to 'yes' on the gateway. <br>
+                If this is not the case, it can be set by executing this command on the gateway:
+            </p>
+            <p>
+                echo 'GatewayPorts yes' >> sshd_config
+            </p>
+            <div class="questions">
+                <div>
+                    <label class="a">My computer's port (A):</label>
+                    <input type="text" id="myport" />
+                </div>
+                <div>
+                    <label class="b">Gateway's port (B):</label>
+                    <input type="text" id="gwport" />
+                </div>
+                <div>
+                    <label class="c">Gateway's address (C):</label>
+                    <input type="text" id="gwaddr" />
+                </div>
+                <div>
+                    <label class="d">SSH username (D):</label>
+                    <input type="text" id="username" />
+                </div>
+            </div>
+
+            <div>
+                <label id="result"></label>
+            </div>
+
+            <div>
+                <div>
+                    <button id="copy-button">copy to clipboard</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var myport = document.getElementById('myport');
+            var gwport = document.getElementById('gwport');
+            var gwaddr = document.getElementById('gwaddr');
+            var username = document.getElementById('username');
+
+            var result = document.getElementById('result');
+            result.innerText = "ssh -R ..."
+            const inputHandler = function() {
+                result.innerText = `ssh -R 0.0.0.0:${gwport.value}:localhost:${myport.value} ${username.value}@${gwaddr.value}`;
+            }
+
+            myport.addEventListener('input', inputHandler);
+            gwport.addEventListener('input', inputHandler);
+            gwaddr.addEventListener('input', inputHandler);
+            username.addEventListener('input', inputHandler);
+
+            function copyResultToClipboard() {
+                navigator.clipboard.writeText(result.innerText);
+            }
+
+            var copyButton = document.getElementById("copy-button");
+            copyButton.addEventListener("click", copyResultToClipboard);
+         </script>
+    </body>
+</html>

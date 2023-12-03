@@ -1,0 +1,124 @@
+body {
+    font-family: 'Fira Code';
+    font-size: 16px;
+    color: #d1d0c5;
+    background-color: #323437;
+}
+
+#scenario-buttons a {
+    text-decoration: none;
+}
+
+.scenario {
+    display: inline;
+    height: 30px;
+    width: 30px;
+    background: none;
+    border: 2px solid #d1d0c5;
+    font-family: 'Fira Code';
+    font-size: 16px;
+    color: #d1d0c5;
+    cursor: pointer;
+}
+
+.scenario-current {
+    background: #696966;
+}
+
+.content {
+    text-align: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.content pre {
+    display: inline-block;
+    text-align: left;
+}
+
+.a {
+    color: #88E8AB;
+}
+
+.b {
+    color: #8895E8;
+}
+
+.c {
+    color: #E888C5;
+}
+
+.d {
+    color: #E8DB88;
+}
+
+.e {
+    color: #E38C8B;
+}
+
+.questions {
+    display: inline-block;
+    margin-top: 30px;
+}
+
+label {
+    display: inline-block;
+    text-align: right;
+    width: 300px;
+}
+
+input {
+    height: 30px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid #d1d0c5;
+    font-family: 'Fira Code';
+    font-size: 16px;
+    color: #d1d0c5;
+}
+
+#result {
+    display: inline-block;
+    margin-top: 40px;
+    width: 1200px;
+    font-family: 'Fira Code';
+    font-size: 22px;
+    text-align: center;
+    color: #d1d0c5;
+}
+
+#copy-button {
+    height: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background: none;
+    border: 2px solid #d1d0c5;
+    font-family: 'Fira Code';
+    font-size: 16px;
+    color: #d1d0c5;
+    position: relative;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#copy-button:after {
+    content: "";
+    background: #d1d0c5;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+#copy-button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}

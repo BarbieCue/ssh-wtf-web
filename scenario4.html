@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <title>What the forward?!</title>
+        <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Fira Code'>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="content">
+
+            <div id="scenario-buttons">
+                <a href="scenario1.html">
+                    <button class="scenario">1</button>
+                </a>
+                <a href="scenario2.html">
+                    <button class="scenario">2</button>
+                </a>
+                <a href="scenario3.html">
+                    <button class="scenario">3</button>
+                </a>
+                <a href="scenario4.html">
+                    <button class="scenario scenario-current">4</button>
+                </a>
+            </div>
+
+            <p>
+                There is another computer on my network and i want to open 
+                one of its ports to the outside world so that others can access it.
+            </p>
+
+            <pre>
+ another computer               my computer                           gateway
+@@@@@@@@@@@@@@@@@@          @@@@@@@@@@@@@@@@@@                  @@@@@@@@@@@@@@@@@@ 
+@      <span class="b">(B)</span>       @          @                @                  @       <span class="d">(D)</span>      @
+@                @          @                @       ssh        @                @
+@ my app <----- 1234 <----- @                @ <==============> @ <------------ 8080 <--- curl gateway:8080
+@                @ <span class="a">(A)</span>      @                @     username     @                @ <span class="c">(C)</span>
+@                @          @   ssh client   @       <span class="e">(E)</span>        @   ssh server   @
+@@@@@@@@@@@@@@@@@@          @@@@@@@@@@@@@@@@@@                  @@@@@@@@@@@@@@@@@@
+            </pre>
+            
+            <p>
+                Example
+            </p>
+
+            <p>
+                My application runs on another computer in my network and 
+                i want people from outside of my network to access it.
+            </p>
+
+            <p>
+                Important
+            </p>
+            <p>
+                I'm sure that 'GatewayPorts' is set to 'yes' on the gateway. <br>
+                If this is not the case, it can be set by executing this command on the gateway:
+            </p>
+            <p>
+                echo 'GatewayPorts yes' >> sshd_config
+            </p>
+            <div class="questions">
+                <div>
+                    <label class="a">Other computer's port (A):</label>
+                    <input type="text" id="otherport" />
+                </div>
+                <div>
+                    <label class="b">Other computer's address (B):</label>
+                    <input type="text" id="otheraddr" />
+                </div>
+                <div>
+                    <label class="c">Gateway's port (C):</label>
+                    <input type="text" id="gwport" />
+                </div>
+                <div>
+                    <label class="d">Gateway's address (D):</label>
+                    <input type="text" id="gwaddr" />
+                </div>
+                <div>
+                    <label class="e">SSH username (E):</label>
+                    <input type="text" id="username" />
+                </div>
+            </div>
+
+            <div>
+                <label id="result"></label>
+            </div>
+
+            <div>
+                <button id="copy-button">copy to clipboard</button>
+            </div>
+        </div>
+
+        <script>
+            var otherport = document.getElementById('otherport');
+            var otheraddr = document.getElementById('otheraddr');
+            var gwport = document.getElementById('gwport');
+            var gwaddr = document.getElementById('gwaddr');
+            var username = document.getElementById('username');
+
+            var result = document.getElementById('result');
+            result.innerText = "ssh -R ..."
+            const inputHandler = function() {
+                result.innerText = `ssh -R 0.0.0.0:${gwport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${gwaddr.value}`;
+            }
+
+            otherport.addEventListener('input', inputHandler);
+            otheraddr.addEventListener('input', inputHandler);
+            gwport.addEventListener('input', inputHandler);
+            gwaddr.addEventListener('input', inputHandler);
+            username.addEventListener('input', inputHandler);
+
+            function copyResultToClipboard() {
+                navigator.clipboard.writeText(result.innerText);
+            }
+
+            var copyButton = document.getElementById("copy-button");
+            copyButton.addEventListener("click", copyResultToClipboard);
+         </script>
+    </body>
+</html>
