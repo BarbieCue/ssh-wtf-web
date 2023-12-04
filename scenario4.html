@@ -2,7 +2,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>What the f..orward?!</title>
-        <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Fira Code'>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Code">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -91,13 +91,13 @@
         </div>
 
         <script>
-            var otherport = document.getElementById('otherport');
-            var otheraddr = document.getElementById('otheraddr');
-            var gwport = document.getElementById('gwport');
-            var gwaddr = document.getElementById('gwaddr');
-            var username = document.getElementById('username');
+            const otherport = document.getElementById('otherport');
+            const otheraddr = document.getElementById('otheraddr');
+            const gwport = document.getElementById('gwport');
+            const gwaddr = document.getElementById('gwaddr');
+            const username = document.getElementById('username');
 
-            var result = document.getElementById('result');
+            const result = document.getElementById('result');
 
             function concatResult() {
                 return `ssh -R 0.0.0.0:${gwport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${gwaddr.value}`;
@@ -119,7 +119,7 @@
                 navigator.clipboard.writeText(result.innerText);
             }
 
-            var copyButton = document.getElementById("copy-button");
+            const copyButton = document.getElementById("copy-button");
             copyButton.addEventListener("click", copyResultToClipboard);
          </script>
     </body>
