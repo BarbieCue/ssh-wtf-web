@@ -1,5 +1,5 @@
 body {
-    font-family: 'Fira Code';
+    font-family: 'Fira Code', monospace;
     font-size: 16px;
     color: #d1d0c5;
     background-color: #323437;
@@ -15,7 +15,7 @@ body {
     width: 30px;
     background: none;
     border: 2px solid #d1d0c5;
-    font-family: 'Fira Code';
+    font-family: 'Fira Code', monospace;
     font-size: 16px;
     color: #d1d0c5;
     cursor: pointer;
@@ -72,7 +72,7 @@ input {
     background: none;
     border: none;
     border-bottom: 2px solid #d1d0c5;
-    font-family: 'Fira Code';
+    font-family: 'Fira Code', monospace;
     font-size: 16px;
     color: #d1d0c5;
 }
@@ -80,7 +80,7 @@ input {
 #result {
     display: inline-block;
     margin-top: 40px;
-    font-family: 'Fira Code';
+    font-family: 'Fira Code', monospace;
     font-size: 22px;
     text-align: center;
     color: #d1d0c5;
@@ -92,7 +92,7 @@ input {
     margin-bottom: 30px;
     background: none;
     border: 2px solid #d1d0c5;
-    font-family: 'Fira Code';
+    font-family: 'Fira Code', monospace;
     font-size: 16px;
     color: #d1d0c5;
     position: relative;
