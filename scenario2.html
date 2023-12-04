@@ -10,16 +10,16 @@
 
             <div id="scenario-buttons">
                 <a href="scenario1.html">
-                    <button class="scenario">1</button>
+                    <span class="scenario">1</span>
                 </a>
                 <a href="scenario2.html">
-                    <button class="scenario scenario-current">2</button>
+                    <span class="scenario scenario-current">2</span>
                 </a>
                 <a href="scenario3.html">
-                    <button class="scenario">3</button>
+                    <span class="scenario">3</span>
                 </a>
                 <a href="scenario4.html">
-                    <button class="scenario">4</button>
+                    <span class="scenario">4</span>
                 </a>
             </div>
 
@@ -46,30 +46,30 @@
             </p>
 
             <p>
-                My application on my computer is configured to connect to 
+                My application on my computer is configured to connect to
                 a database on localhost:1234.<br>
                 This should connect it to the database on another-computer:8080.
             </p>
 
             <div class="questions">
                 <div>
-                    <label class="a">My computer's port (A):</label>
+                    <label class="a" for="myport">My computer's port (A):</label>
                     <input type="text" id="myport" value="1234"/>
                 </div>
                 <div>
-                    <label class="b">Other computer's port (B):</label>
+                    <label class="b" for="otherport">Other computer's port (B):</label>
                     <input type="text" id="otherport" value="8080"/>
                 </div>
                 <div>
-                    <label class="c">Other computer's address (C):</label>
+                    <label class="c" for="otheraddr">Other computer's address (C):</label>
                     <input type="text" id="otheraddr" value="another-computer"/>
                 </div>
                 <div>
-                    <label class="d">Jump host's address (D):</label>
+                    <label class="d" for="jumpaddr">Jump host's address (D):</label>
                     <input type="text" id="jumpaddr" value="jump"/>
                 </div>
                 <div>
-                    <label class="e">SSH username (E):</label>
+                    <label class="e" for="username">SSH username (E):</label>
                     <input type="text" id="username" value="user"/>
                 </div>
             </div>
@@ -93,7 +93,7 @@
             var username = document.getElementById('username');
 
             var result = document.getElementById('result');
-            
+
             function concatResult() {
                 return `ssh -L ${myport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${jumpaddr.value}`;
             }
