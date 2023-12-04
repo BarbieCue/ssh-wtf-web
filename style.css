@@ -16,7 +16,7 @@ body {
     height: 30px;
     width: 30px;
     background: none;
-    border: 2px solid #d1d0c5;
+    border: 4px double #d1d0c5;
     font-family: 'Fira Code', monospace;
     font-size: 16px;
     color: #d1d0c5;
@@ -99,7 +99,7 @@ input {
     margin-top: 30px;
     margin-bottom: 30px;
     background: none;
-    border: 2px solid #d1d0c5;
+    border: 4px double #d1d0c5;
     font-family: 'Fira Code', monospace;
     font-size: 16px;
     color: #d1d0c5;
