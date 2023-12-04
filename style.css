@@ -40,22 +40,27 @@ body {
 
 .a {
     color: #88E8AB;
+    border-bottom-color: #88E8AB;
 }
 
 .b {
     color: #8895E8;
+    border-bottom-color: #8895E8;
 }
 
 .c {
     color: #E888C5;
+    border-bottom-color: #E888C5;
 }
 
 .d {
     color: #E8DB88;
+    border-bottom-color: #E8DB88;
 }
 
 .e {
     color: #E38C8B;
+    border-bottom-color: #E38C8B;
 }
 
 .questions {
