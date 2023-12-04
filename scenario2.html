@@ -53,23 +53,23 @@
             <div class="questions">
                 <div>
                     <label class="a">My computer's port (A):</label>
-                    <input type="text" id="myport" />
+                    <input type="text" id="myport" value="1234"/>
                 </div>
                 <div>
                     <label class="b">Other computer's port (B):</label>
-                    <input type="text" id="otherport" />
+                    <input type="text" id="otherport" value="8080"/>
                 </div>
                 <div>
                     <label class="c">Other computer's address (C):</label>
-                    <input type="text" id="otheraddr" />
+                    <input type="text" id="otheraddr" value="another-computer"/>
                 </div>
                 <div>
                     <label class="d">Jump host's address (D):</label>
-                    <input type="text" id="jumpaddr" />
+                    <input type="text" id="jumpaddr" value="jump"/>
                 </div>
                 <div>
                     <label class="e">SSH username (E):</label>
-                    <input type="text" id="username" />
+                    <input type="text" id="username" value="user"/>
                 </div>
             </div>
 
@@ -92,9 +92,15 @@
             var username = document.getElementById('username');
 
             var result = document.getElementById('result');
-            result.innerText = "ssh -L ..."
+            
+            function concatResult() {
+                return `ssh -L ${myport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${jumpaddr.value}`;
+            }
+
+            result.innerText = concatResult()
+
             const inputHandler = function() {
-                result.innerText = `ssh -L ${myport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${jumpaddr.value}`;
+                result.innerText = concatResult();
             }
 
             myport.addEventListener('input', inputHandler);
