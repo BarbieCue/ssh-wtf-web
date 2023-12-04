@@ -4,7 +4,7 @@ SSH port forwarding ..
 
 ![meme](meme.jpg)
 
-... i know it is easy, but ...
+... I know it is easy, but ...
 
 
 # Let me help you
