@@ -10,7 +10,9 @@ body {
 }
 
 .scenario {
-    display: inline;
+    display: inline-grid;
+    place-items: center;
+    box-sizing: border-box;
     height: 30px;
     width: 30px;
     background: none;
