@@ -1,25 +1,26 @@
-<html>
+<html lang="en">
     <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>What the f..orward?!</title>
-        <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Fira Code'>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Code">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
 
         <div class="content">
-            
+
             <div id="scenario-buttons">
                 <a href="scenario1.html">
-                    <button class="scenario scenario-current">1</button>
+                    <span class="scenario scenario-current">1</span>
                 </a>
                 <a href="scenario2.html">
-                    <button class="scenario">2</button>
+                    <span class="scenario">2</span>
                 </a>
                 <a href="scenario3.html">
-                    <button class="scenario">3</button>
+                    <span class="scenario">3</span>
                 </a>
                 <a href="scenario4.html">
-                    <button class="scenario">4</button>
+                    <span class="scenario">4</span>
                 </a>
             </div>
 
@@ -44,26 +45,26 @@
             </p>
 
             <p>
-                My application on my computer is configured to connect 
+                My application on my computer is configured to connect
                 to a database on localhost:1234. <br>
                 This should connect it to the database on another-computer:8080.
             </p>
 
             <div class="questions">
                 <div>
-                    <label class="a">My computer's port (A):</label>
+                    <label class="a" for="myport">My computer's port (A):</label>
                     <input type="text" id="myport" value="1234"/>
                 </div>
                 <div>
-                    <label class="b">Other computer's port (B):</label>
+                    <label class="b" for="otherport">Other computer's port (B):</label>
                     <input type="text" id="otherport" value="8080"/>
                 </div>
                 <div>
-                    <label class="c">Other computer's address (C):</label>
+                    <label class="c" for="otheraddr">Other computer's address (C):</label>
                     <input type="text" id="otheraddr" value="another-computer"/>
                 </div>
                 <div>
-                    <label class="d">SSH username (D):</label>
+                    <label class="d" for="username">SSH username (D):</label>
                     <input type="text" id="username" value="user"/>
                 </div>
             </div>
@@ -80,12 +81,12 @@
         </div>
 
         <script>
-            var myport = document.getElementById('myport');
-            var otherport = document.getElementById('otherport');
-            var otheraddr = document.getElementById('otheraddr');
-            var username = document.getElementById('username');
+            const myport = document.getElementById('myport');
+            const otherport = document.getElementById('otherport');
+            const otheraddr = document.getElementById('otheraddr');
+            const username = document.getElementById('username');
 
-            var result = document.getElementById('result');
+            const result = document.getElementById('result');
 
             function concatResult() {
                 return `ssh -L ${myport.value}:localhost:${otherport.value} ${username.value}@${otheraddr.value}`;
@@ -106,7 +107,7 @@
                 navigator.clipboard.writeText(result.innerText);
             }
 
-            var copyButton = document.getElementById("copy-button");
+            const copyButton = document.getElementById("copy-button");
             copyButton.addEventListener("click", copyResultToClipboard);
          </script>
     </body>

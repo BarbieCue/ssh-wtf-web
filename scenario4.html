@@ -1,7 +1,8 @@
-<html>
+<html lang="en">
     <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>What the f..orward?!</title>
-        <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Fira Code'>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Code">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -9,27 +10,27 @@
 
             <div id="scenario-buttons">
                 <a href="scenario1.html">
-                    <button class="scenario">1</button>
+                    <span class="scenario">1</span>
                 </a>
                 <a href="scenario2.html">
-                    <button class="scenario">2</button>
+                    <span class="scenario">2</span>
                 </a>
                 <a href="scenario3.html">
-                    <button class="scenario">3</button>
+                    <span class="scenario">3</span>
                 </a>
                 <a href="scenario4.html">
-                    <button class="scenario scenario-current">4</button>
+                    <span class="scenario scenario-current">4</span>
                 </a>
             </div>
 
             <p>
-                There is another computer on my network and i want to open 
+                There is another computer on my network and i want to open
                 one of its ports to the outside world so that others can access it.
             </p>
 
             <pre>
  another computer               my computer                           gateway
-@@@@@@@@@@@@@@@@@@          @@@@@@@@@@@@@@@@@@                  @@@@@@@@@@@@@@@@@@ 
+@@@@@@@@@@@@@@@@@@          @@@@@@@@@@@@@@@@@@                  @@@@@@@@@@@@@@@@@@
 @      <span class="b">(B)</span>       @          @                @                  @       <span class="d">(D)</span>      @
 @                @          @                @       ssh        @                @
 @ my app <----- 1234 <----- @                @ <==============> @ <------------ 8080 <--- curl gateway:8080
@@ -37,13 +38,13 @@
 @                @          @   ssh client   @       <span class="e">(E)</span>        @   ssh server   @
 @@@@@@@@@@@@@@@@@@          @@@@@@@@@@@@@@@@@@                  @@@@@@@@@@@@@@@@@@
             </pre>
-            
+
             <p>
                 Example
             </p>
 
             <p>
-                My application runs on another computer in my network and 
+                My application runs on another computer in my network and
                 i want people from outside of my network to access it.
             </p>
 
@@ -59,23 +60,23 @@
             </p>
             <div class="questions">
                 <div>
-                    <label class="a">Other computer's port (A):</label>
+                    <label class="a" for="otherport">Other computer's port (A):</label>
                     <input type="text" id="otherport" value="1234"/>
                 </div>
                 <div>
-                    <label class="b">Other computer's address (B):</label>
+                    <label class="b" for="otheraddr">Other computer's address (B):</label>
                     <input type="text" id="otheraddr" value="another-computer"/>
                 </div>
                 <div>
-                    <label class="c">Gateway's port (C):</label>
+                    <label class="c" for="gwport">Gateway's port (C):</label>
                     <input type="text" id="gwport" value="8080"/>
                 </div>
                 <div>
-                    <label class="d">Gateway's address (D):</label>
+                    <label class="d" for="gwaddr">Gateway's address (D):</label>
                     <input type="text" id="gwaddr" value="gateway"/>
                 </div>
                 <div>
-                    <label class="e">SSH username (E):</label>
+                    <label class="e" for="username">SSH username (E):</label>
                     <input type="text" id="username" value="user"/>
                 </div>
             </div>
@@ -90,14 +91,14 @@
         </div>
 
         <script>
-            var otherport = document.getElementById('otherport');
-            var otheraddr = document.getElementById('otheraddr');
-            var gwport = document.getElementById('gwport');
-            var gwaddr = document.getElementById('gwaddr');
-            var username = document.getElementById('username');
+            const otherport = document.getElementById('otherport');
+            const otheraddr = document.getElementById('otheraddr');
+            const gwport = document.getElementById('gwport');
+            const gwaddr = document.getElementById('gwaddr');
+            const username = document.getElementById('username');
 
-            var result = document.getElementById('result');
-            
+            const result = document.getElementById('result');
+
             function concatResult() {
                 return `ssh -R 0.0.0.0:${gwport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${gwaddr.value}`;
             }
@@ -118,7 +119,7 @@
                 navigator.clipboard.writeText(result.innerText);
             }
 
-            var copyButton = document.getElementById("copy-button");
+            const copyButton = document.getElementById("copy-button");
             copyButton.addEventListener("click", copyResultToClipboard);
          </script>
     </body>

@@ -1,7 +1,8 @@
-<html>
+<html lang="en">
     <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>What the f..orward?!</title>
-        <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Fira Code'>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Code">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -9,21 +10,21 @@
 
             <div id="scenario-buttons">
                 <a href="scenario1.html">
-                    <button class="scenario">1</button>
+                    <span class="scenario">1</span>
                 </a>
                 <a href="scenario2.html">
-                    <button class="scenario">2</button>
+                    <span class="scenario">2</span>
                 </a>
                 <a href="scenario3.html">
-                    <button class="scenario scenario-current">3</button>
+                    <span class="scenario scenario-current">3</span>
                 </a>
                 <a href="scenario4.html">
-                    <button class="scenario">4</button>
+                    <span class="scenario">4</span>
                 </a>
             </div>
 
             <p>
-                I want to open one of my computer's ports to the 
+                I want to open one of my computer's ports to the
                 outside world so that others can access it.
             </p>
 
@@ -37,13 +38,13 @@
 @   ssh client   @          <span class="d">(D)</span>       @   ssh server   @
 @@@@@@@@@@@@@@@@@@                    @@@@@@@@@@@@@@@@@@
             </pre>
-            
+
             <p>
                 Example
             </p>
 
             <p>
-                My application runs on my computer and i want people 
+                My application runs on my computer and i want people
                 from outside of my network to access it.
             </p>
 
@@ -59,19 +60,19 @@
             </p>
             <div class="questions">
                 <div>
-                    <label class="a">My computer's port (A):</label>
+                    <label class="a" for="myport">My computer's port (A):</label>
                     <input type="text" id="myport" value="1234"/>
                 </div>
                 <div>
-                    <label class="b">Gateway's port (B):</label>
+                    <label class="b" for="gwport">Gateway's port (B):</label>
                     <input type="text" id="gwport" value="8080"/>
                 </div>
                 <div>
-                    <label class="c">Gateway's address (C):</label>
+                    <label class="c" for="gwaddr">Gateway's address (C):</label>
                     <input type="text" id="gwaddr" value="gateway"/>
                 </div>
                 <div>
-                    <label class="d">SSH username (D):</label>
+                    <label class="d" for="username">SSH username (D):</label>
                     <input type="text" id="username" value="user"/>
                 </div>
             </div>
@@ -88,13 +89,13 @@
         </div>
 
         <script>
-            var myport = document.getElementById('myport');
-            var gwport = document.getElementById('gwport');
-            var gwaddr = document.getElementById('gwaddr');
-            var username = document.getElementById('username');
+            const myport = document.getElementById('myport');
+            const gwport = document.getElementById('gwport');
+            const gwaddr = document.getElementById('gwaddr');
+            const username = document.getElementById('username');
 
-            var result = document.getElementById('result');
-            
+            const result = document.getElementById('result');
+
             function concatResult() {
                 return `ssh -R 0.0.0.0:${gwport.value}:localhost:${myport.value} ${username.value}@${gwaddr.value}`;
             }
@@ -114,7 +115,7 @@
                 navigator.clipboard.writeText(result.innerText);
             }
 
-            var copyButton = document.getElementById("copy-button");
+            const copyButton = document.getElementById("copy-button");
             copyButton.addEventListener("click", copyResultToClipboard);
          </script>
     </body>
