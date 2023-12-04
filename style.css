@@ -87,6 +87,7 @@ input {
 #result {
     display: inline-block;
     margin-top: 40px;
+    width: 800px;
     font-family: 'Fira Code', monospace;
     font-size: 22px;
     text-align: center;
