@@ -60,19 +60,19 @@
             <div class="questions">
                 <div>
                     <label class="a">My computer's port (A):</label>
-                    <input type="text" id="myport" />
+                    <input type="text" id="myport" value="1234"/>
                 </div>
                 <div>
                     <label class="b">Gateway's port (B):</label>
-                    <input type="text" id="gwport" />
+                    <input type="text" id="gwport" value="8080"/>
                 </div>
                 <div>
                     <label class="c">Gateway's address (C):</label>
-                    <input type="text" id="gwaddr" />
+                    <input type="text" id="gwaddr" value="gateway"/>
                 </div>
                 <div>
                     <label class="d">SSH username (D):</label>
-                    <input type="text" id="username" />
+                    <input type="text" id="username" value="user"/>
                 </div>
             </div>
 
@@ -94,9 +94,15 @@
             var username = document.getElementById('username');
 
             var result = document.getElementById('result');
-            result.innerText = "ssh -R ..."
+            
+            function concatResult() {
+                return `ssh -R 0.0.0.0:${gwport.value}:localhost:${myport.value} ${username.value}@${gwaddr.value}`;
+            }
+
+            result.innerText = concatResult()
+
             const inputHandler = function() {
-                result.innerText = `ssh -R 0.0.0.0:${gwport.value}:localhost:${myport.value} ${username.value}@${gwaddr.value}`;
+                result.innerText = concatResult();
             }
 
             myport.addEventListener('input', inputHandler);
