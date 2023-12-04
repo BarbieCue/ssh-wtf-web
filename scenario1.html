@@ -56,11 +56,11 @@
                 </div>
                 <div>
                     <label class="b">Other computer's port (B):</label>
-                    <input type="text" id="otherport" value="8080" />
+                    <input type="text" id="otherport" value="8080"/>
                 </div>
                 <div>
                     <label class="c">Other computer's address (C):</label>
-                    <input type="text" id="otheraddr" value="another-computer" />
+                    <input type="text" id="otheraddr" value="another-computer"/>
                 </div>
                 <div>
                     <label class="d">SSH username (D):</label>
@@ -90,7 +90,7 @@
             function concatResult() {
                 return `ssh -L ${myport.value}:localhost:${otherport.value} ${username.value}@${otheraddr.value}`;
             }
-            
+
             result.innerText = concatResult()
 
             const inputHandler = function() {
