@@ -75,6 +75,15 @@
                 </div>
             </div>
 
+            <div class="misc">
+                <label id="background-wrapper">
+                    <input id="background-checkbox" type="checkbox" />
+                    <span class="on">[x]</span>
+                    <span class="off">[_]</span>
+                </label>
+                <label >run as background process</label>
+            </div>
+
             <div>
                 <label id="result"></label>
             </div>
@@ -92,17 +101,26 @@
             const otheraddr = document.getElementById('otheraddr');
             const jumpaddr = document.getElementById('jumpaddr');
             const username = document.getElementById('username');
-
+            const backgroundCheckbox = document.getElementById('background-checkbox');
             const result = document.getElementById('result');
 
-            function concatResult() {
+            const ssl="ssl -L ";
+
+            function concatInputs() {
                 return `ssh -L ${myport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${jumpaddr.value}`;
             }
 
-            result.innerText = concatResult()
+            result.innerText = `${ssl}${background()}${concatInputs()}`
 
             const inputHandler = function() {
-                result.innerText = concatResult();
+                result.innerText = `${ssl}${background()}${concatInputs()}`
+            }
+
+            function background() {
+                if (backgroundCheckbox.checked)
+                    return "-f -N ";
+                else
+                    return "";
             }
 
             myport.addEventListener('input', inputHandler);
@@ -110,6 +128,7 @@
             otheraddr.addEventListener('input', inputHandler);
             jumpaddr.addEventListener('input', inputHandler);
             username.addEventListener('input', inputHandler);
+            backgroundCheckbox.addEventListener('input', inputHandler);
 
             function copyResultToClipboard() {
                 navigator.clipboard.writeText(result.innerText);
