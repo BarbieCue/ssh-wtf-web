@@ -68,7 +68,7 @@ body {
     margin-top: 30px;
 }
 
-label {
+.questions > div > label {
     display: inline-block;
     text-align: right;
     width: 300px;
@@ -87,7 +87,6 @@ input {
 #result {
     display: inline-block;
     margin-top: 40px;
-    width: 800px;
     font-family: 'Fira Code', monospace;
     font-size: 22px;
     text-align: center;
