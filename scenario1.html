@@ -70,6 +70,15 @@
                 </div>
             </div>
 
+            <div class="misc">
+                <label id="background-wrapper">
+                    <input id="background-checkbox" type="checkbox" />
+                    <span class="on">[x]</span>
+                    <span class="off">[_]</span>
+                </label>
+                <label >run as background process</label>
+            </div>
+
             <div>
                 <label id="result"></label>
             </div>
@@ -87,6 +96,8 @@
             const otheraddr = document.getElementById('otheraddr');
             const username = document.getElementById('username');
 
+            const backgroundCheckbox = document.getElementById('background-checkbox');
+
             const result = document.getElementById('result');
 
             function concatResult() {
@@ -99,10 +110,18 @@
                 result.innerText = concatResult();
             }
 
+            const concatBackground = function() {
+                if (backgroundCheckbox.checked)
+                    result.innerText = `${result.innerText} -f -N -L`;
+                else
+                    result.innerText = concatResult();
+            }
+
             myport.addEventListener('input', inputHandler);
             otherport.addEventListener('input', inputHandler);
             otheraddr.addEventListener('input', inputHandler);
             username.addEventListener('input', inputHandler);
+            backgroundCheckbox.addEventListener('input', concatBackground);
 
             function copyResultToClipboard() {
                 navigator.clipboard.writeText(result.innerText);
