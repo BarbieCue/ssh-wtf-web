@@ -95,33 +95,33 @@
             const otherport = document.getElementById('otherport');
             const otheraddr = document.getElementById('otheraddr');
             const username = document.getElementById('username');
-
             const backgroundCheckbox = document.getElementById('background-checkbox');
-
             const result = document.getElementById('result');
 
-            function concatResult() {
-                return `ssh -L ${myport.value}:localhost:${otherport.value} ${username.value}@${otheraddr.value}`;
+            const ssl="ssl -L";
+
+            function concatInputs() {
+                return `${myport.value}:localhost:${otherport.value} ${username.value}@${otheraddr.value}`;
             }
 
-            result.innerText = concatResult()
+            result.innerText = `${ssl} ${concatInputs()}`
 
             const inputHandler = function() {
-                result.innerText = concatResult();
+                result.innerText = `${ssl} ${concatInputs()}`
             }
 
-            const concatBackground = function() {
+            const checkboxHandler = function() {
                 if (backgroundCheckbox.checked)
-                    result.innerText = `${result.innerText} -f -N -L`;
+                    result.innerText = `${ssl} -f -N ${concatInputs()}`;
                 else
-                    result.innerText = concatResult();
+                    result.innerText = `${ssl} ${concatInputs()}`
             }
 
             myport.addEventListener('input', inputHandler);
             otherport.addEventListener('input', inputHandler);
             otheraddr.addEventListener('input', inputHandler);
             username.addEventListener('input', inputHandler);
-            backgroundCheckbox.addEventListener('input', concatBackground);
+            backgroundCheckbox.addEventListener('input', checkboxHandler);
 
             function copyResultToClipboard() {
                 navigator.clipboard.writeText(result.innerText);
