@@ -109,16 +109,17 @@
             const backgroundCheckbox = document.getElementById('background-checkbox');
             const result = document.getElementById('result');
 
-            const ssl="ssl -R ";
+            const ssl="ssl ";
+            const lr="-R ";
 
             function concatInputs() {
                 return `0.0.0.0:${gwport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${gwaddr.value}`;
             }
 
-            result.innerText = `${ssl}${background()}${concatInputs()}`
+            result.innerText = `${ssl}${background()}${lr}${concatInputs()}`
 
             const inputHandler = function() {
-                result.innerText = `${ssl}${background()}${concatInputs()}`
+                result.innerText = `${ssl}${background()}${lr}${concatInputs()}`
             }
 
             function background() {
