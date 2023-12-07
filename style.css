@@ -90,6 +90,7 @@ input {
 
 #background-wrapper {
     cursor: pointer;
+    user-select: none;
 }
 
 #background-wrapper > input[type="checkbox"] {
