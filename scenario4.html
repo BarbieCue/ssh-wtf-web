@@ -82,6 +82,15 @@
                 </div>
             </div>
 
+            <div class="misc">
+                <label id="background-wrapper">
+                    <input id="background-checkbox" type="checkbox" />
+                    <span class="on">[x]</span>
+                    <span class="off">[_]</span>
+                </label>
+                <label >run as background process</label>
+            </div>
+
             <div>
                 <label id="result"></label>
             </div>
@@ -97,17 +106,27 @@
             const gwport = document.getElementById('gwport');
             const gwaddr = document.getElementById('gwaddr');
             const username = document.getElementById('username');
-
+            const backgroundCheckbox = document.getElementById('background-checkbox');
             const result = document.getElementById('result');
 
-            function concatResult() {
-                return `ssh -R 0.0.0.0:${gwport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${gwaddr.value}`;
+            const ssh="ssh ";
+            const lr="-R ";
+
+            function concatInputs() {
+                return `0.0.0.0:${gwport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${gwaddr.value}`;
             }
 
-            result.innerText = concatResult()
+            result.innerText = `${ssh}${background()}${lr}${concatInputs()}`
 
             const inputHandler = function() {
-                result.innerText = concatResult();
+                result.innerText = `${ssh}${background()}${lr}${concatInputs()}`
+            }
+
+            function background() {
+                if (backgroundCheckbox.checked)
+                    return "-f -N ";
+                else
+                    return "";
             }
 
             otherport.addEventListener('input', inputHandler);
@@ -115,6 +134,7 @@
             gwport.addEventListener('input', inputHandler);
             gwaddr.addEventListener('input', inputHandler);
             username.addEventListener('input', inputHandler);
+            backgroundCheckbox.addEventListener('input', inputHandler);
 
             function copyResultToClipboard() {
                 navigator.clipboard.writeText(result.innerText);

@@ -68,7 +68,7 @@ body {
     margin-top: 30px;
 }
 
-label {
+.questions > div > label {
     display: inline-block;
     text-align: right;
     width: 300px;
@@ -84,10 +84,31 @@ input {
     color: #d1d0c5;
 }
 
+.misc {
+    margin-top: 40px;
+}
+
+#background-wrapper {
+    cursor: pointer;
+}
+
+#background-wrapper > input[type="checkbox"] {
+    display: none;
+}
+
+#background-checkbox:checked ~ .on,
+#background-checkbox:not(:checked) ~ .off {
+    display: revert;
+}
+
+#background-checkbox:checked ~ .off,
+#background-checkbox:not(:checked) ~ .on {
+    display: none;
+}
+
 #result {
     display: inline-block;
     margin-top: 40px;
-    width: 800px;
     font-family: 'Fira Code', monospace;
     font-size: 22px;
     text-align: center;
