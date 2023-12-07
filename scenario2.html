@@ -107,7 +107,7 @@
             const ssl="ssl -L ";
 
             function concatInputs() {
-                return `ssh -L ${myport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${jumpaddr.value}`;
+                return `${myport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${jumpaddr.value}`;
             }
 
             result.innerText = `${ssl}${background()}${concatInputs()}`
