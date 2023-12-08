@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "prettier": "latest"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}
