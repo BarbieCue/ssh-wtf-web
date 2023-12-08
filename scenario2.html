@@ -1,37 +1,38 @@
 <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <title>What the f..orward?!</title>
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Code">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="content">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>What the f..orward?!</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira Code"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <div id="scenario-buttons">
+        <a href="scenario1.html">
+          <span class="scenario">1</span>
+        </a>
+        <a href="scenario2.html">
+          <span class="scenario scenario-current">2</span>
+        </a>
+        <a href="scenario3.html">
+          <span class="scenario">3</span>
+        </a>
+        <a href="scenario4.html">
+          <span class="scenario">4</span>
+        </a>
+      </div>
 
-            <div id="scenario-buttons">
-                <a href="scenario1.html">
-                    <span class="scenario">1</span>
-                </a>
-                <a href="scenario2.html">
-                    <span class="scenario scenario-current">2</span>
-                </a>
-                <a href="scenario3.html">
-                    <span class="scenario">3</span>
-                </a>
-                <a href="scenario4.html">
-                    <span class="scenario">4</span>
-                </a>
-            </div>
+      <p>
+        I would like to have a port on my computer that forwards to a port on
+        another computer. But I can't connect directly to the other computer.
+        Instead, I have to go via a jump host.
+      </p>
 
-            <p>
-                I would like to have a port on my computer
-                that forwards to a port on another computer.
-                But I can't connect directly to the other computer.
-                Instead, I have to go via a jump host.
-            </p>
-
-            <pre>
+      <pre>
    my computer                               jump                  another computer
 @@@@@@@@@@@@@@@@@@                    @@@@@@@@@@@@@@@@@@          @@@@@@@@@@@@@@@@@@
 @                @                    @       <span class="d">(D)</span>      @          @       <span class="c">(C)</span>      @
@@ -42,101 +43,102 @@
 @@@@@@@@@@@@@@@@@@                    @@@@@@@@@@@@@@@@@@          @@@@@@@@@@@@@@@@@@
             </pre>
 
-            <p>
-                Example
-            </p>
+      <p>Example</p>
 
-            <p>
-                My application on my computer is configured to connect to
-                a database on localhost:1234.<br>
-                This should connect it to the database on another-computer:8080.
-            </p>
+      <p>
+        My application on my computer is configured to connect to a database on
+        localhost:1234.<br />
+        This should connect it to the database on another-computer:8080.
+      </p>
 
-            <div class="questions">
-                <div>
-                    <label class="a" for="myport">My computer's port (A):</label>
-                    <input class="a" type="text" id="myport" value="1234"/>
-                </div>
-                <div>
-                    <label class="b" for="otherport">Other computer's port (B):</label>
-                    <input class="b" type="text" id="otherport" value="8080"/>
-                </div>
-                <div>
-                    <label class="c" for="otheraddr">Other computer's address (C):</label>
-                    <input class="c" type="text" id="otheraddr" value="another-computer"/>
-                </div>
-                <div>
-                    <label class="d" for="jumpaddr">Jump host's address (D):</label>
-                    <input class="d" type="text" id="jumpaddr" value="jump"/>
-                </div>
-                <div>
-                    <label class="e" for="username">SSH username (E):</label>
-                    <input class="e" type="text" id="username" value="user"/>
-                </div>
-            </div>
-
-            <div class="misc">
-                <label id="background-wrapper">
-                    <input id="background-checkbox" type="checkbox" />
-                    <span class="on">[x]</span>
-                    <span class="off">[_]</span>
-                    run as background process
-                </label>
-            </div>
-
-            <div>
-                <label id="result"></label>
-            </div>
-
-            <div>
-                <div>
-                    <button id="copy-button">copy to clipboard</button>
-                </div>
-            </div>
+      <div class="questions">
+        <div>
+          <label class="a" for="myport">My computer's port (A):</label>
+          <input class="a" type="text" id="myport" value="1234" />
         </div>
+        <div>
+          <label class="b" for="otherport">Other computer's port (B):</label>
+          <input class="b" type="text" id="otherport" value="8080" />
+        </div>
+        <div>
+          <label class="c" for="otheraddr">Other computer's address (C):</label>
+          <input
+            class="c"
+            type="text"
+            id="otheraddr"
+            value="another-computer"
+          />
+        </div>
+        <div>
+          <label class="d" for="jumpaddr">Jump host's address (D):</label>
+          <input class="d" type="text" id="jumpaddr" value="jump" />
+        </div>
+        <div>
+          <label class="e" for="username">SSH username (E):</label>
+          <input class="e" type="text" id="username" value="user" />
+        </div>
+      </div>
 
-        <script>
-            const myport = document.getElementById('myport');
-            const otherport = document.getElementById('otherport');
-            const otheraddr = document.getElementById('otheraddr');
-            const jumpaddr = document.getElementById('jumpaddr');
-            const username = document.getElementById('username');
-            const backgroundCheckbox = document.getElementById('background-checkbox');
-            const result = document.getElementById('result');
+      <div class="misc">
+        <label id="background-wrapper">
+          <input id="background-checkbox" type="checkbox" />
+          <span class="on">[x]</span>
+          <span class="off">[_]</span>
+          run as background process
+        </label>
+      </div>
 
-            const ssh="ssh ";
-            const lr="-L ";
+      <div>
+        <label id="result"></label>
+      </div>
 
-            function concatInputs() {
-                return `${myport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${jumpaddr.value}`;
-            }
+      <div>
+        <div>
+          <button id="copy-button">copy to clipboard</button>
+        </div>
+      </div>
+    </div>
 
-            result.innerText = `${ssh}${background()}${lr}${concatInputs()}`
+    <script>
+      const myport = document.getElementById("myport");
+      const otherport = document.getElementById("otherport");
+      const otheraddr = document.getElementById("otheraddr");
+      const jumpaddr = document.getElementById("jumpaddr");
+      const username = document.getElementById("username");
+      const backgroundCheckbox = document.getElementById("background-checkbox");
+      const result = document.getElementById("result");
 
-            const inputHandler = function() {
-                result.innerText = `${ssh}${background()}${lr}${concatInputs()}`
-            }
+      const ssh = "ssh ";
+      const lr = "-L ";
 
-            function background() {
-                if (backgroundCheckbox.checked)
-                    return "-f -N ";
-                else
-                    return "";
-            }
+      function concatInputs() {
+        return `${myport.value}:${otheraddr.value}:${otherport.value} ${username.value}@${jumpaddr.value}`;
+      }
 
-            myport.addEventListener('input', inputHandler);
-            otherport.addEventListener('input', inputHandler);
-            otheraddr.addEventListener('input', inputHandler);
-            jumpaddr.addEventListener('input', inputHandler);
-            username.addEventListener('input', inputHandler);
-            backgroundCheckbox.addEventListener('input', inputHandler);
+      result.innerText = `${ssh}${background()}${lr}${concatInputs()}`;
 
-            function copyResultToClipboard() {
-                navigator.clipboard.writeText(result.innerText);
-            }
+      const inputHandler = function () {
+        result.innerText = `${ssh}${background()}${lr}${concatInputs()}`;
+      };
 
-            const copyButton = document.getElementById("copy-button");
-            copyButton.addEventListener("click", copyResultToClipboard);
-         </script>
-    </body>
+      function background() {
+        if (backgroundCheckbox.checked) return "-f -N ";
+        else return "";
+      }
+
+      myport.addEventListener("input", inputHandler);
+      otherport.addEventListener("input", inputHandler);
+      otheraddr.addEventListener("input", inputHandler);
+      jumpaddr.addEventListener("input", inputHandler);
+      username.addEventListener("input", inputHandler);
+      backgroundCheckbox.addEventListener("input", inputHandler);
+
+      function copyResultToClipboard() {
+        navigator.clipboard.writeText(result.innerText);
+      }
+
+      const copyButton = document.getElementById("copy-button");
+      copyButton.addEventListener("click", copyResultToClipboard);
+    </script>
+  </body>
 </html>

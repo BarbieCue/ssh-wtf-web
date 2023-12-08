@@ -1,153 +1,153 @@
 body {
-    font-family: 'Fira Code', monospace;
-    font-size: 16px;
-    color: #d1d0c5;
-    background-color: #323437;
+  font-family: "Fira Code", monospace;
+  font-size: 16px;
+  color: #d1d0c5;
+  background-color: #323437;
 }
 
 #scenario-buttons a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .scenario {
-    display: inline-grid;
-    place-items: center;
-    box-sizing: border-box;
-    height: 30px;
-    width: 30px;
-    background: none;
-    border: 4px double #d1d0c5;
-    font-family: 'Fira Code', monospace;
-    font-size: 16px;
-    color: #d1d0c5;
-    cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+  box-sizing: border-box;
+  height: 30px;
+  width: 30px;
+  background: none;
+  border: 4px double #d1d0c5;
+  font-family: "Fira Code", monospace;
+  font-size: 16px;
+  color: #d1d0c5;
+  cursor: pointer;
 }
 
 .scenario-current {
-    background: #696966;
+  background: #696966;
 }
 
 .content {
-    text-align: center;
-    max-width: 1200px;
-    margin: auto;
+  text-align: center;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .content pre {
-    display: inline-block;
-    text-align: left;
+  display: inline-block;
+  text-align: left;
 }
 
 .a {
-    color: #88E8AB;
-    border-bottom-color: #88E8AB;
+  color: #88e8ab;
+  border-bottom-color: #88e8ab;
 }
 
 .b {
-    color: #8895E8;
-    border-bottom-color: #8895E8;
+  color: #8895e8;
+  border-bottom-color: #8895e8;
 }
 
 .c {
-    color: #E888C5;
-    border-bottom-color: #E888C5;
+  color: #e888c5;
+  border-bottom-color: #e888c5;
 }
 
 .d {
-    color: #E8DB88;
-    border-bottom-color: #E8DB88;
+  color: #e8db88;
+  border-bottom-color: #e8db88;
 }
 
 .e {
-    color: #E38C8B;
-    border-bottom-color: #E38C8B;
+  color: #e38c8b;
+  border-bottom-color: #e38c8b;
 }
 
 .questions {
-    display: inline-block;
-    margin-top: 30px;
+  display: inline-block;
+  margin-top: 30px;
 }
 
 .questions > div > label {
-    display: inline-block;
-    text-align: right;
-    width: 300px;
+  display: inline-block;
+  text-align: right;
+  width: 300px;
 }
 
 input {
-    height: 30px;
-    background: none;
-    border: none;
-    border-bottom: 2px solid #d1d0c5;
-    font-family: 'Fira Code', monospace;
-    font-size: 16px;
-    color: #d1d0c5;
+  height: 30px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #d1d0c5;
+  font-family: "Fira Code", monospace;
+  font-size: 16px;
+  color: #d1d0c5;
 }
 
 .misc {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 #background-wrapper {
-    cursor: pointer;
-    user-select: none;
+  cursor: pointer;
+  user-select: none;
 }
 
 #background-wrapper > input[type="checkbox"] {
-    display: none;
+  display: none;
 }
 
 #background-checkbox:checked ~ .on,
 #background-checkbox:not(:checked) ~ .off {
-    display: revert;
+  display: revert;
 }
 
 #background-checkbox:checked ~ .off,
 #background-checkbox:not(:checked) ~ .on {
-    display: none;
+  display: none;
 }
 
 #result {
-    display: inline-block;
-    margin-top: 40px;
-    font-family: 'Fira Code', monospace;
-    font-size: 22px;
-    text-align: center;
-    color: #d1d0c5;
+  display: inline-block;
+  margin-top: 40px;
+  font-family: "Fira Code", monospace;
+  font-size: 22px;
+  text-align: center;
+  color: #d1d0c5;
 }
 
 #copy-button {
-    height: 30px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background: none;
-    border: 4px double #d1d0c5;
-    font-family: 'Fira Code', monospace;
-    font-size: 16px;
-    color: #d1d0c5;
-    position: relative;
-    transition-duration: 0.4s;
-    text-decoration: none;
-    overflow: hidden;
-    cursor: pointer;
+  height: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background: none;
+  border: 4px double #d1d0c5;
+  font-family: "Fira Code", monospace;
+  font-size: 16px;
+  color: #d1d0c5;
+  position: relative;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 #copy-button:after {
-    content: "";
-    background: #d1d0c5;
-    display: block;
-    position: absolute;
-    padding-top: 300%;
-    padding-left: 350%;
-    margin-left: -20px!important;
-    margin-top: -120%;
-    opacity: 0;
-    transition: all 0.8s
+  content: "";
+  background: #d1d0c5;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
 }
 
 #copy-button:active:after {
-    padding: 0;
-    margin: 0;
-    opacity: 1;
-    transition: 0s
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
 }
