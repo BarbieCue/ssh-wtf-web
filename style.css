@@ -1,5 +1,5 @@
 body {
-  font-family: "Fira Code", monospace;
+  font-family: 'Fira Code', monospace;
   font-size: 16px;
   color: #d1d0c5;
   background-color: #323437;
@@ -17,7 +17,7 @@ body {
   width: 30px;
   background: none;
   border: 4px double #d1d0c5;
-  font-family: "Fira Code", monospace;
+  font-family: 'Fira Code', monospace;
   font-size: 16px;
   color: #d1d0c5;
   cursor: pointer;
@@ -79,7 +79,7 @@ input {
   background: none;
   border: none;
   border-bottom: 2px solid #d1d0c5;
-  font-family: "Fira Code", monospace;
+  font-family: 'Fira Code', monospace;
   font-size: 16px;
   color: #d1d0c5;
 }
@@ -93,7 +93,7 @@ input {
   user-select: none;
 }
 
-#background-wrapper > input[type="checkbox"] {
+#background-wrapper > input[type='checkbox'] {
   display: none;
 }
 
@@ -110,7 +110,7 @@ input {
 #result {
   display: inline-block;
   margin-top: 40px;
-  font-family: "Fira Code", monospace;
+  font-family: 'Fira Code', monospace;
   font-size: 22px;
   text-align: center;
   color: #d1d0c5;
@@ -122,7 +122,7 @@ input {
   margin-bottom: 30px;
   background: none;
   border: 4px double #d1d0c5;
-  font-family: "Fira Code", monospace;
+  font-family: 'Fira Code', monospace;
   font-size: 16px;
   color: #d1d0c5;
   position: relative;
@@ -133,7 +133,7 @@ input {
 }
 
 #copy-button:after {
-  content: "";
+  content: '';
   background: #d1d0c5;
   display: block;
   position: absolute;
@@ -150,4 +150,8 @@ input {
   margin: 0;
   opacity: 1;
   transition: 0s;
+}
+
+.hotkey {
+  text-decoration: underline;
 }

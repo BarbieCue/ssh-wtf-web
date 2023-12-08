@@ -2,26 +2,26 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <title>What the f..orward?!</title>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Fira Code"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="content">
       <div id="scenario-buttons">
-        <a href="scenario1.html">
+        <a id="nav-1" href="./scenario1.html">
           <span class="scenario">1</span>
         </a>
-        <a href="scenario2.html">
+        <a id="nav-2" href="./scenario2.html">
           <span class="scenario">2</span>
         </a>
-        <a href="scenario3.html">
+        <a id="nav-3" href="./scenario3.html">
           <span class="scenario scenario-current">3</span>
         </a>
-        <a href="scenario4.html">
+        <a id="nav-4" href="./scenario4.html">
           <span class="scenario">4</span>
         </a>
       </div>
@@ -80,7 +80,7 @@
           <input id="background-checkbox" type="checkbox" />
           <span class="on">[x]</span>
           <span class="off">[_]</span>
-          run as background process
+          run as <span class="hotkey">b</span>ackground process
         </label>
       </div>
 
@@ -95,44 +95,45 @@
       </div>
     </div>
 
+    <script src="./hotkeys.js"></script>
     <script>
-      const myport = document.getElementById("myport");
-      const gwport = document.getElementById("gwport");
-      const gwaddr = document.getElementById("gwaddr");
-      const username = document.getElementById("username");
-      const backgroundCheckbox = document.getElementById("background-checkbox");
-      const result = document.getElementById("result");
+      const myport = document.getElementById('myport')
+      const gwport = document.getElementById('gwport')
+      const gwaddr = document.getElementById('gwaddr')
+      const username = document.getElementById('username')
+      const backgroundCheckbox = document.getElementById('background-checkbox')
+      const result = document.getElementById('result')
 
-      const ssh = "ssh ";
-      const lr = "-R ";
+      const ssh = 'ssh '
+      const lr = '-R '
 
       function concatInputs() {
-        return `0.0.0.0:${gwport.value}:localhost:${myport.value} ${username.value}@${gwaddr.value}`;
+        return `0.0.0.0:${gwport.value}:localhost:${myport.value} ${username.value}@${gwaddr.value}`
       }
 
-      result.innerText = `${ssh}${background()}${lr}${concatInputs()}`;
+      result.innerText = `${ssh}${background()}${lr}${concatInputs()}`
 
       const inputHandler = function () {
-        result.innerText = `${ssh}${background()}${lr}${concatInputs()}`;
-      };
+        result.innerText = `${ssh}${background()}${lr}${concatInputs()}`
+      }
 
       function background() {
-        if (backgroundCheckbox.checked) return "-f -N ";
-        else return "";
+        if (backgroundCheckbox.checked) return '-f -N '
+        else return ''
       }
 
-      myport.addEventListener("input", inputHandler);
-      gwport.addEventListener("input", inputHandler);
-      gwaddr.addEventListener("input", inputHandler);
-      username.addEventListener("input", inputHandler);
-      backgroundCheckbox.addEventListener("input", inputHandler);
+      myport.addEventListener('input', inputHandler)
+      gwport.addEventListener('input', inputHandler)
+      gwaddr.addEventListener('input', inputHandler)
+      username.addEventListener('input', inputHandler)
+      backgroundCheckbox.addEventListener('input', inputHandler)
 
       function copyResultToClipboard() {
-        navigator.clipboard.writeText(result.innerText);
+        navigator.clipboard.writeText(result.innerText)
       }
 
-      const copyButton = document.getElementById("copy-button");
-      copyButton.addEventListener("click", copyResultToClipboard);
+      const copyButton = document.getElementById('copy-button')
+      copyButton.addEventListener('click', copyResultToClipboard)
     </script>
   </body>
 </html>
