@@ -151,3 +151,7 @@ input {
     opacity: 1;
     transition: 0s
 }
+
+.hotkey {
+    text-decoration: underline;
+}

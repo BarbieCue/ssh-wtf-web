@@ -11,16 +11,16 @@
         <div class="content">
 
             <div id="scenario-buttons">
-                <a href="scenario1.html">
+                <a id="nav-1" href="scenario1.html">
                     <span class="scenario scenario-current">1</span>
                 </a>
-                <a href="scenario2.html">
+                <a id="nav-2" href="scenario2.html">
                     <span class="scenario">2</span>
                 </a>
-                <a href="scenario3.html">
+                <a id="nav-3" href="scenario3.html">
                     <span class="scenario">3</span>
                 </a>
-                <a href="scenario4.html">
+                <a id="nav-4" href="scenario4.html">
                     <span class="scenario">4</span>
                 </a>
             </div>
@@ -75,7 +75,7 @@
                     <input id="background-checkbox" type="checkbox" />
                     <span class="on">[x]</span>
                     <span class="off">[_]</span>
-                    run as background process
+                    run as <span class="hotkey">b</span>ackground process
                 </label>
             </div>
 
@@ -90,6 +90,7 @@
             </div>
         </div>
 
+        <script src="./hotkeys.js"></script>
         <script>
             const myport = document.getElementById('myport');
             const otherport = document.getElementById('otherport');
